@@ -32,6 +32,7 @@ func (s *GA) Run() {
 	s.PM = 0.35
 	s.PC = 0.7
 	s.Gap = 0.8
+	s.CodeLen = len(s.Data)
 	s.CreatePop()
 	s.SolvePop()
 	s.BestInd = s.Pop[0]
