@@ -28,7 +28,7 @@ type Aco struct {
 	Table      []Path      // 路径记录
 	PathBest   []Path      // 各代最佳路径
 	LengthBest []float64   // 各代最佳路径的长度
-	LentghAve  []float64   // 各代路径的平均长度
+	LengthAve  []float64   // 各代路径的平均长度
 	Data       [][]float64 // 路网
 	CityNum    int         // 城市数量
 }
