@@ -17,7 +17,7 @@ type Path struct {
 }
 
 type Aco struct {
-	Popsize    int         // 种群大小
+	PopSize    int         // 种群大小
 	MaxGen     int         // 最大迭代次数
 	Alpha      float64     // 信息素重要程度因子
 	Beta       float64     // 启发函数重要程度因子
@@ -34,7 +34,7 @@ type Aco struct {
 }
 
 func (s *Aco) Run() {
-	s.Popsize = 50
+	s.PopSize = 50
 	s.MaxGen = 200
 	s.Alpha = 1
 	s.Beta = 5
@@ -45,9 +45,9 @@ func (s *Aco) Run() {
 	s.PathBest = make([]Path, s.MaxGen)
 	s.LengthBest = make([]float64, s.MaxGen)
 	for gen := 0; gen < s.MaxGen; gen++ {
-		s.Table = make([]Path, s.Popsize)
+		s.Table = make([]Path, s.PopSize)
 		// 初始化起始点和待访问城市
-		for i := 0; i < s.Popsize; i++ {
+		for i := 0; i < s.PopSize; i++ {
 			s.Table[i].Allow = make([]int, s.CityNum)
 			for j := 0; j < s.CityNum; j++ {
 				s.Table[i].Allow[j] = j
@@ -57,7 +57,7 @@ func (s *Aco) Run() {
 		}
 
 		// 路径搜索
-		for i := 0; i < s.Popsize; i++ {
+		for i := 0; i < s.PopSize; i++ {
 			for j := 1; j < s.CityNum; j++ {
 				s.Table[i].Tabu = append(s.Table[i].Tabu, s.Table[i].Route[j-1])
 				s.Table[i].Allow = mymath.DelInt(s.Table[i].Allow, s.Table[i].Route[j-1])
@@ -87,7 +87,7 @@ func (s *Aco) Run() {
 		for i := 0; i < s.CityNum; i++ {
 			tmpTau[i] = make([]float64, s.CityNum)
 		}
-		for i := 0; i < s.Popsize; i++ {
+		for i := 0; i < s.PopSize; i++ {
 			for j := 0; j < s.CityNum-1; j++ {
 				tmpTau[s.Table[i].Route[j]][s.Table[i].Route[j+1]] += s.Q / s.Table[i].Value
 			}

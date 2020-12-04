@@ -27,11 +27,11 @@ type GA struct {
 }
 
 func (s *GA) Run() {
-	s.PopSize = 80
-	s.MaxGen = 400
-	s.PM = 0.35
+	s.PopSize = 100
+	s.MaxGen = 600
+	s.PM = 0.25
 	s.PC = 0.7
-	s.Gap = 0.8
+	s.Gap = 0.9
 	s.CodeLen = len(s.Data)
 	s.CreatePop()
 	s.SolvePop()
@@ -49,7 +49,7 @@ func (s *GA) Run() {
 		}
 		s.BestValues = append(s.BestValues, int(s.BestInd.Value))
 	}
-	fmt.Println(s.BestValues)
+	fmt.Println(s.BestValues, "\n", s.BestInd)
 }
 
 // 计算适应度
