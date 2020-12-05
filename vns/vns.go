@@ -18,8 +18,10 @@ func (s *Vns) Run() {
 	s.Solve = rand.Perm(s.CityNum)
 	s.Value = s.CalculateDis(s.Solve)
 
-Here:
-	for i := 0; i < 3; i++ {
+	i := 0
+
+	for i < 3 {
+	Here:
 		tempSolve := make([]int, s.CityNum)
 		copy(tempSolve, s.Solve)
 		for j := 0; j < s.Gen; j++ {
@@ -54,6 +56,7 @@ Here:
 				tempValue := s.CalculateDis(path)
 				//fmt.Println(tempSolve, "\n", path)
 				if tempValue < s.Value {
+					fmt.Println(i)
 					s.Value = tempValue
 					s.Solve = path
 					fmt.Println(s.Value)
@@ -61,6 +64,7 @@ Here:
 				}
 			}
 		}
+		i++
 	}
 
 	fmt.Println(s.Solve)
