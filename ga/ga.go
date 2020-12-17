@@ -28,7 +28,7 @@ type GA struct {
 
 func (s *GA) Run() {
 	s.PopSize = 100
-	s.MaxGen = 600
+	s.MaxGen = 1
 	s.PM = 0.25
 	s.PC = 0.7
 	s.Gap = 0.9
@@ -49,6 +49,9 @@ func (s *GA) Run() {
 		}
 		s.BestValues = append(s.BestValues, int(s.BestInd.Value))
 	}
+
+	s.BestInd.Ind = []int{9, 8, 7, 3, 15, 22, 10, 23, 18, 16, 2, 17, 21, 20, 19, 24, 25, 27, 26, 29, 30, 28, 0, 14, 13, 11, 12, 6, 5, 4, 1}
+	s.SolveInd(&s.BestInd)
 	fmt.Println(s.BestValues, "\n", s.BestInd)
 }
 

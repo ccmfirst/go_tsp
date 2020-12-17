@@ -20,7 +20,7 @@ func (s *Vns) Run() {
 
 	i := 0
 
-	for i < 3 {
+	for i < 2 {
 	Here:
 		tempSolve := make([]int, s.CityNum)
 		copy(tempSolve, s.Solve)
@@ -42,19 +42,6 @@ func (s *Vns) Run() {
 			if i == 1 {
 				path := s.Insert(tempSolve)
 				tempValue := s.CalculateDis(path)
-				if tempValue < s.Value {
-					fmt.Println(i)
-					s.Value = tempValue
-					s.Solve = path
-					fmt.Println(s.Value)
-					goto Here
-				}
-			}
-
-			if i == 2 {
-				path := s.Exchange(tempSolve)
-				tempValue := s.CalculateDis(path)
-				//fmt.Println(tempSolve, "\n", path)
 				if tempValue < s.Value {
 					fmt.Println(i)
 					s.Value = tempValue

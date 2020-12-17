@@ -101,8 +101,12 @@ func (s *Aco) Run() {
 		}
 	}
 
-	fmt.Println(s.LengthBest)
-	fmt.Println(s.PathBest[s.MaxGen-1].Value, len(s.PathBest[s.MaxGen-1].Route), s.PathBest[s.MaxGen-1].Route)
+	sort.Sort(Paths(s.PathBest))
+
+	fmt.Println(s.PathBest[0].Value, len(s.PathBest[0].Route), s.PathBest[0].Route)
+	for _, path := range s.PathBest {
+		fmt.Println(path.Value)
+	}
 }
 
 func (s *Aco) CreateEtaTau() {
@@ -130,6 +134,7 @@ func (s *Aco) CalLength() {
 		}
 		path.Value += s.Data[path.Route[0]][path.Route[s.CityNum-1]]
 		s.Table[k].Value = path.Value
+
 	}
 }
 
