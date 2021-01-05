@@ -61,7 +61,7 @@ func (s *ILS) CostTotal(route []int) float64 {
 }
 
 func (s *ILS) LocalSearch(solution Solution) Solution {
-	initalCost := solution.Cost
+	initialCost := solution.Cost
 	var nowCost float64
 	var curSolution Solution
 	for i := 0; i < s.CitySize-1; i++ {
@@ -75,13 +75,13 @@ func (s *ILS) LocalSearch(solution Solution) Solution {
 		for i := 0; i < s.CitySize; i++ {
 			for j := 0; j < s.CitySize; j++ {
 				curSolution.Route = s.TwoOptSwap(i, j, solution.Route)
-				nowCost = initalCost + s.Delta[i][j]
+				nowCost = initialCost + s.Delta[i][j]
 				curSolution.Cost = nowCost
 				if curSolution.Cost < solution.Cost {
 					count = 0
 					copy(solution.Route, curSolution.Route)
 					solution.Cost = curSolution.Cost
-					initalCost = curSolution.Cost
+					initialCost = curSolution.Cost
 					s.Update(i, j, solution.Route)
 				}
 			}
