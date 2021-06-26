@@ -1,8 +1,9 @@
 package aco
 
 import (
-	"go_tsp/data"
 	"testing"
+
+	"go_tsp/data"
 )
 
 func TestAco_Run(t *testing.T) {
